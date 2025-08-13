@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 // Listen for any keydown event at the window level
 window.addEventListener("keydown", function () {
     currentTypingSession = null; // Invalidate the current typing session
-    console.log('content.js: Keydown event detected'); // Log keydown event
+    //console.log('content.js: Keydown event detected'); // Log keydown event
 });
 
 function emulateTyping(text, session, delayedStart) {
@@ -31,7 +31,7 @@ function emulateTyping(text, session, delayedStart) {
 
     const startTyping = function () {
         function typeNextCharacter() {
-            console.log('content.js: Typing character', text[i]); // Log character being typed
+            //console.log('content.js: Typing character', text[i]); // Log character being typed
 
             if (i < text.length && session === currentTypingSession) {
                 // Create a KeyboardEvent instance
@@ -49,12 +49,13 @@ function emulateTyping(text, session, delayedStart) {
                 // Attempt to insert the text using document.execCommand
                 document.execCommand("insertText", false, text[i++]);
 
-                let delay = Math.random() * (200 - 50) + 50;
+                // let delay = Math.random() * (200 - 50) + 50;
 
-                if (Math.random() < 0.05) {
-                    delay += Math.random() * (700 - 200) + 200;
-                }
-
+                // if (Math.random() < 0.05) {
+                //     delay += Math.random() * (700 - 200) + 200;
+                // }
+                
+                let delay = 55.6;
                 setTimeout(typeNextCharacter, delay);
             }
         }
